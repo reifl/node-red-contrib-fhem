@@ -81,7 +81,7 @@ module.exports = function (RED) {
                         send = false;
                     }
                     if (send) {
-                        msg.attributes = fhem.devicelist[msg.device].Attributes;
+                        msg.attributes = fhem.devicelist[msg.device]?.Attributes;
                         send_count++;
                         this.send(msg);
                     }
