@@ -1,0 +1,50 @@
+<script type="text/javascript">
+    RED.nodes.registerType('fhem-cmd', {
+        category: 'FHEM',
+        color: '#FFFFE7',
+        defaults: {
+            name: { value: "" },
+            fheminstance: { value: "", type: "fhem-instance", required: true }
+        },
+        action: { value: '' },
+        position: {
+            value: '',
+            validate: function (v) {
+                return this.action !== 'position' || !isNaN(v);
+            }
+        },
+        optime: {
+            value: '',
+            validate: function (v) {
+                return v.length === 0 || !isNaN(v);
+            }
+        },
+        emitStop: { value: false },
+        inputs: 1,
+        outputs: 1,
+
+        icon: "fhemicon.png",
+        label: function () {
+            if (this.name) {
+                return this.name;
+            } else {
+                return "fhem-cmd";
+            }
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="fhem-cmd">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-fheminstance"><i class="fa fa-cog"></i> Instance</label>
+        <input id="node-input-fheminstance">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="fhem-cmd">
+    <p>A node to send a command to a fhem-instance and gets the response</p>
+</script>

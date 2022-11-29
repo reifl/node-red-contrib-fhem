@@ -23,8 +23,8 @@
         },
         emitStop: { value: false },
         inputs: 0,
-        outputs: 1,
-
+        outputs: 2,
+        outputLabels: ["event msg","devicelist"],
         icon: "fhemicon.png",
         oneditprepare: function () {
             let devices = [];
@@ -78,15 +78,24 @@
         <input id="node-input-fheminstance">
     </div>
     <div class="form-row">
-        <label for="node-input-filterDevice"><i class="fa fa-tag"></i> Devicefilter</label>
+        <label for="node-input-filterDevice"><i class="fa fa-tag"></i> Devicename</label>
         <input type="text" id="node-input-filterDevice">
     </div>
     <div class="form-row">
-        <label for="node-input-filterReading"><i class="fa fa-tag"></i> Readingsfilter</label>
+        <label for="node-input-filterReading"><i class="fa fa-tag"></i> Reading</label>
         <input type="text" id="node-input-filterReading" placeholder="Readingsfilter">
     </div>
+    <div class="form-tips"><b>Tip:</b> you can use devicename and reading at the same time to filter the incoming messages.</div>
 </script>
 
 <script type="text/html" data-help-name="fhem-in">
-    <p>A simple node that converts the message from fhem-in characters</p>
+    <p>A node that parse and filters messages from a fhem-instance</p>
+    <h3>Outputs</h3>
+    <dl class="message-properties">
+    <dt>payload
+        <span class="property-type">raw fhem message</span>
+    </dt>
+    <dt>timestamp
+        <span class="property-type">time of message income</span>
+    </dt>
 </script>
