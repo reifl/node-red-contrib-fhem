@@ -18,6 +18,7 @@
         "nodes": {
             "fhem-in": "fhem-input.js",
             "fhem-out": "fhem-output.js",
+            "fhem-cmd": "fhem-cmd.js",
             "fhem-instance": "fhem-instance.js"
         }
     },
