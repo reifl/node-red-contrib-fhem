@@ -1,4 +1,4 @@
-[![npm version](https://img.shields.io/npm/v/node-red-contrib-fhem.svg?style=flat-square)](https://www.npmjs.org/package/node-red-contrib-fhem)
+[![npm version](https://img.shields.io/npm/v/node-red-contrib-fhem.svg?style=flat-square)](https://www.npmjs.org/package/node-red-contrib-fhem)[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/paypalme/pgebauerdev/1)
 
 # node-red-contrib-fhem
 
