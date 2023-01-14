@@ -1,3 +1,5 @@
+[![npm version](https://img.shields.io/npm/v/node-red-contrib-fhem.svg?style=flat-square)](https://www.npmjs.org/package/node-red-contrib-fhem)
+
 # node-red-contrib-fhem
 
 This package contains a receiver and a sender node which connects to FHEM instances.
