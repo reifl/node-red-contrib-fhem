@@ -45,12 +45,14 @@ module.exports = function (RED) {
             connstate = "connected";
             this.status({ fill: "green", shape: "dot", text: "connected" });
         });
-        fhem.eventEmitter.on("cmd_disconnected", () => {
+        fhem.eventEmitter.on("cmd_disconnected", (msg) => {
             connstate = "disconnected";
-            this.status({ fill: "red", shape: "dot", text: "disconnected" });
+            var txt = "disconnected";
+            if ( msg!=undefined ) txt = msg;
+            this.status({ fill: "red", shape: "dot", text: txt });
         });
         fhem.eventEmitter.on("cmd_data_received", (data) => {
-            this.log( data );
+            //this.log( data );
             //this.status({ fill: "green", shape: "dot", text: "connected" });
             var msg = { payload: data }
             send_count++;
