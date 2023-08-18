@@ -33,9 +33,11 @@ module.exports = function (RED) {
             connstate = "connected";
             this.status({ fill: "green", shape: "dot", text: "connected" });
         });
-        fhem.eventEmitter.on("disconnected", () => {
+        fhem.eventEmitter.on("disconnected", (msg) => {
             connstate = "disconnected";
-            this.status({ fill: "red", shape: "ring", text: "disconnected" });
+            var txt = "disconnected";
+            if ( msg!=undefined ) txt = msg;
+            this.status({ fill: "red", shape: "ring", text: txt });
         });
         fhem.eventEmitter.on("devicelist_received", (list) => {
             this.send([null,{payload: list}]);
