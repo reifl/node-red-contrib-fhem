@@ -107,6 +107,13 @@ module.exports = function (RED) {
                 var response = {"source":clientCmd.source_id,"payload":raw}
                 t.eventEmitter.emit("cmd_data_response",response);
             });
+            clientCmd.on('error', function (err) {
+                t.error("error cmd_data_send:"+JSON.stringify(err))
+                t.eventEmitter.emit("reconnect");
+            })
+            clientCmd.on('timeout', function (err) {
+                t.error("timeout cmd_data_send:"+JSON.stringify(err))
+            })
             clientCmd.connect(config.port, config.server);
         });
         this.eventEmitter.on("devicelist_update", (data) => {
@@ -149,6 +156,13 @@ module.exports = function (RED) {
 
                 //t.eventEmitter.emit("data_received", data.toString());
             });
+            clientMgm.on('error', function (err) {
+                t.error("error devicelist_update:"+JSON.stringify(err))
+                t.eventEmitter.emit("reconnect");
+            })
+            clientMgm.on('timeout', function (err) {
+                t.error("timeout devicelist_update:"+JSON.stringify(err))
+            })
             clientMgm.connect(config.port, config.server);
         });
         this.eventEmitter.on("data_send", (data) => {
